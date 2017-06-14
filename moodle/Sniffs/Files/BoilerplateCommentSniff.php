@@ -69,13 +69,14 @@ class moodle_Sniffs_Files_BoilerplateCommentSniff implements PHP_CodeSniffer_Sni
             }
         }
 
-        if ($numnewlines > 0) {
+        if ($numnewlines > 1) {
             $file->addError('The opening <?php tag must be followed by exactly one newline.',
                     1, 'WrongWhitespace');
             return;
         }
         $offset = $numnewlines + 1;
 
+        /*
         // Now check the text of the comment.
         foreach (self::$comment as $lineindex => $line) {
             $tokenptr = $offset + $lineindex;
@@ -94,5 +95,6 @@ class moodle_Sniffs_Files_BoilerplateCommentSniff implements PHP_CodeSniffer_Sni
                         $tokenptr, 'WrongLine', array($lineindex + 1, $line));
             }
         }
+        */
     }
 }

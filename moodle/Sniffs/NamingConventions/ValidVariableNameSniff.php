@@ -56,11 +56,13 @@ class moodle_Sniffs_NamingConventions_ValidVariableNameSniff
         }
 
         // Find underscores in variable names (accepting $_foo for private vars).
+        /*
         $pos = strpos($membername, '_');
         if ($pos > 1) {
             $error = "Member variable \"$membername\" must not contain underscores.";
             $phpcsfile->addError($error, $stackptr);
         }
+        */
 
         // Must not be preceded by 'var' keyword.
         $keyword = $phpcsfile->findPrevious(T_VAR, $stackptr);
@@ -121,9 +123,11 @@ class moodle_Sniffs_NamingConventions_ValidVariableNameSniff
             $phpcsfile->addError($error, $stackptr);
         }
 
+        /*
         if (strpos($varname, '_') !== false && !in_array($varname, self::$allowedglobals)) {
             $error = "Variable \"$varname\" must not contain underscores.";
             $phpcsfile->addError($error, $stackptr);
         }
+        */
     }
 }

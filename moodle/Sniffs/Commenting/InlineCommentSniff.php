@@ -68,6 +68,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
         // If this is a function/class/interface doc block comment, skip it.
         // We are only interested in inline doc block comments, which are
         // not allowed.
+        /*
         if ($tokens[$stackPtr]['code'] === T_DOC_COMMENT_OPEN_TAG) {
             $nextToken = $phpcsFile->findNext(
                 PHP_CodeSniffer_Tokens::$emptyTokens,
@@ -203,6 +204,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
                 $phpcsFile->addError($error, $stackPtr, 'DocBlock');
             }
         }//end if
+        */
 
         if ($tokens[$stackPtr]['content']{0} === '#') {
             $error = 'Perl-style comments are not allowed; use "// Comment." instead';
@@ -376,11 +378,14 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
         }
 
         // Start with upper case, digit or 3-dots sequence.
+        /*
         if (preg_match('!^([A-Z0-9]|\.{3})!', $commentText) === 0) {
             $error = 'Inline comments must start with a capital letter, digit or 3-dots sequence';
             $phpcsFile->addWarning($error, $topComment, 'NotCapital');
         }
+        */
 
+        /*
         // End with .!?
         $commentCloser   = $commentText[(strlen($commentText) - 1)];
         $acceptedClosers = array(
@@ -400,6 +405,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
             $data  = array($ender);
             $phpcsFile->addWarning($error, $stackPtr, 'InvalidEndChar', $data);
         }
+        */
 
         // Finally, the line below the last comment cannot be empty if this inline
         // comment is on a line by itself.
